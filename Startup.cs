@@ -17,21 +17,35 @@ namespace RazorMovies
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            // Use SQLite in development environment
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<RazorMovieContext>(options =>
+                options.UseSqlite(
+                    Configuration.GetConnectionString("RazorMovieContext")));
+            }
 
-            // Use SQLite database
-            services.AddDbContext<RazorMovieContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("RazorMovieContext")));
+            // Use Microsoft SQL Server in production environment
+            else
+            {
+                services.AddDbContext<RazorMovieContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("MovieContext")));
+            }
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
