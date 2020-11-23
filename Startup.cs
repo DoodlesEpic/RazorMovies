@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+// Database
+using RazorMovies.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace RazorMovies
 {
     public class Startup
@@ -24,6 +28,10 @@ namespace RazorMovies
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            // Use SQLite database
+            services.AddDbContext<RazorMovieContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("RazorMovieContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
