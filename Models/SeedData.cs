@@ -27,7 +27,8 @@ namespace RazorMovies.Models
                         Title = "The Good, The Bad, and The Ugly",
                         ReleaseDate = DateTime.Parse("1967-12-29"),
                         Genre = "Western",
-                        Price = 1.20M
+                        Price = 1.20M,
+                        Rating = "R"
                     },
 
                     new Movie
@@ -35,7 +36,8 @@ namespace RazorMovies.Models
                         Title = "The Book of Eli",
                         ReleaseDate = DateTime.Parse("2010-11-01"),
                         Genre = "Action and Adventure",
-                        Price = 1.50M
+                        Price = 1.50M,
+                        Rating = "R"
                     },
 
                     new Movie
@@ -43,7 +45,8 @@ namespace RazorMovies.Models
                         Title = "Ghostbusters ",
                         ReleaseDate = DateTime.Parse("1984-3-13"),
                         Genre = "Comedy",
-                        Price = 8.99M
+                        Price = 8.99M,
+                        Rating = "G"
                     },
 
                     new Movie
@@ -51,7 +54,8 @@ namespace RazorMovies.Models
                         Title = "Ghostbusters 2",
                         ReleaseDate = DateTime.Parse("1986-2-23"),
                         Genre = "Comedy",
-                        Price = 9.99M
+                        Price = 9.99M,
+                        Rating = "G"
                     },
 
                     new Movie
@@ -59,7 +63,8 @@ namespace RazorMovies.Models
                         Title = "Rio Bravo",
                         ReleaseDate = DateTime.Parse("1959-4-15"),
                         Genre = "Western",
-                        Price = 3.99M
+                        Price = 3.99M,
+                        Rating = "NA"
                     }
                 );
                 context.SaveChanges();
