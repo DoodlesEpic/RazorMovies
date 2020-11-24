@@ -12,9 +12,14 @@
 </p>
 
 <form class="form-inline">
-    <label class="sr-only" for="search">Search for movie title</label>
+    <label class="sr-only" for="search">Search for movies by title</label>
     <input id="search" class="form-control mb-2 mr-sm-2" type="text" asp-for="SearchString"
         placeholder="Search for movie title">
+
+    <label class="sr-only" for="genre">Search for movies by genre</label>
+    <select id="genre" class="form-control mb-2 mr-sm-2" asp-for="MovieGenre" asp-items="Model.Genres">
+        <option value="">All</option>
+    </select>
 
     <input class="btn btn-primary mb-2" type="submit" value="Filter" />
 </form>
